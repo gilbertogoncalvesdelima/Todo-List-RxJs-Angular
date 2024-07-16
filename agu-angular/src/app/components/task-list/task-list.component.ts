@@ -33,13 +33,7 @@ interface Task {
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent {
-  tasks: Task[] = [
-    { title: 'Task 1', description: 'Description for task 1', completed: false },
-    { title: 'Task 2', description: 'Description for task 2', completed: false },
-    { title: 'Task 3', description: 'Description for task 3', completed: false },
-    { title: 'Task 4', description: 'Description for task 4', completed: false },
-    { title: 'Task 5', description: 'Description for task 5', completed: false }
-  ];
+  tasks: Task[] = [];
 
   constructor(private taskService: TaskService) {}
 

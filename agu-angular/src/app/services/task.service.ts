@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:9000/api';
+  private apiUrl = 'https://6696d0a00312447373c3ca18.mockapi.io';
 
   constructor(private http: HttpClient) {}
 

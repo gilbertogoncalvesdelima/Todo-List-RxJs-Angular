@@ -12,8 +12,7 @@
         <input matInput type="text" id="description" [(ngModel)]="description" name="description" required>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Add Task</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!title || !description">Add Task</button>
     </form>
   </mat-card>
 </div>
-

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NavComponent } from "./components/nav/nav.component";
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,14 @@ import { NavComponent } from "./components/nav/nav.component";
 })
 export class AppComponent {
   title = 'frontend';
+
+  showNav: boolean = true;
+
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit(){
+
+  }
 }

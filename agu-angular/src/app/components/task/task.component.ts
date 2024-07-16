@@ -18,8 +18,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
-    MatSnackBarModule
-
+    MatSnackBarModule,
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'

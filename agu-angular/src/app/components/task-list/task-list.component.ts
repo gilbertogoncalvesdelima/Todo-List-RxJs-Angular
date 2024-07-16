@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 
 interface Task {
+  id: string;
   title: string;
   description: string;
   completed: boolean;
@@ -52,7 +53,14 @@ export class TaskListComponent {
     this.tasks.push(task);
   }
 
-  deleteTask(index: number) {
-    this.tasks.splice(index, 1);
+  deleteTask(id: string, index: number): void {
+    this.taskService.deleteTask(id).subscribe({
+      next: () => {
+        this.tasks.splice(index, 1);
+      },
+      error: (err) => {
+        console.error('Error deleting task:', err);
+      }
+    });
   }
 }

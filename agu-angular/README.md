@@ -39,6 +39,9 @@ As tarefas devem ser armazenadas em um banco de dados MySQL.
 
 --- 
 
+# CREDENCIAIS
+usuário: teste123
+senha: teste123
 
 # Frontend
 

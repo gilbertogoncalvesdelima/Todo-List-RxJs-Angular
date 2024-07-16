@@ -1,18 +1,18 @@
 <div class="add-task-container">
   <mat-card class="add-task-card">
     <h2>Add Task</h2>
-    <form (ngSubmit)="addTask()" class="form-add-task">
+    <form [formGroup]="taskForm" (ngSubmit)="addTask()" class="form-add-task">
       <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
-        <input matInput type="text" id="title" [(ngModel)]="title" name="title" required>
+        <input matInput formControlName="title" type="text" id="title" required>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
-        <input matInput type="text" id="description" [(ngModel)]="description" name="description" required>
+        <input matInput formControlName="description" type="text" id="description" required>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="!title || !description">Add Task</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">Add Task</button>
     </form>
   </mat-card>
 </div>

@@ -1,42 +1,58 @@
-import { Component } from '@angular/core';
-import {TaskService} from "../../services/task.service";
-import {FormsModule} from "@angular/forms";
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TaskService } from '../../services/task.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task',
   standalone: true,
   imports: [
-    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
     MatSnackBarModule,
+    RouterModule,
+    ReactiveFormsModule
   ],
   templateUrl: './task.component.html',
-  styleUrl: './task.component.scss'
+  styleUrls: ['./task.component.scss']
 })
-export class TaskComponent {
-  title: string = '';
-  description: string = '';
+export class TaskComponent implements OnInit {
+  taskForm!: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private taskService: TaskService,
     private router: Router,
-    private snackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar
+  ) { }
 
-    addTask(): void {
-      this.taskService.addTask(this.title, this.description).subscribe({
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm(){
+    this.taskForm = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+  }
+
+  addTask(): void {
+    if (this.taskForm.valid) {
+      const { title, description } = this.taskForm.value;
+      this.taskService.addTask(title, description).subscribe({
         next: () => {
-          this.title = '';
-          this.description = '';
+          this.taskForm.reset();
           this.router.navigate(['/tasks']);
           this.snackBar.open('Tarefa criada com sucesso!', 'Close', {
             duration: 3000,
@@ -54,4 +70,5 @@ export class TaskComponent {
         }
       });
     }
+  }
 }

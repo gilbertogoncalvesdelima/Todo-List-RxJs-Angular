@@ -12,7 +12,10 @@
             <div class="task-description">{{ task.description }}</div>
           </div>
           <button mat-icon-button (click)="deleteTask(task.id, i)">
-            <mat-icon class="delete-button" style="color: #111943;">delete</mat-icon>
+            <mat-icon class="delete-button">delete</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteTask(task.id, i)">
+            <mat-icon class="delete-button">edit</mat-icon>
           </button>
         </div>
       </mat-list-item>

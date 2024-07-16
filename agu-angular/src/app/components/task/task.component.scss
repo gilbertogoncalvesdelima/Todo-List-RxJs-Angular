@@ -1,0 +1,30 @@
+.add-task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.add-task-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+h2 {
+  text-align: center;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-add-task{
+  display: flex;
+  flex-direction: column;
+}

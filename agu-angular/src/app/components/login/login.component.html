@@ -1,17 +1,21 @@
 <div class="login-container">
   <mat-card class="login-card">
     <h2>Login</h2>
-    <form (ngSubmit)="login()"  class="form-login">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
       <mat-form-field appearance="fill">
-        <mat-label>Usuário</mat-label>
-        <input matInput type="text" [(ngModel)]="username" name="username" required>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" type="text" required>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Senha</mat-label>
-        <input matInput type="password" [(ngModel)]="password" name="password" required>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" required>
       </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
-    <button mat-raised-button color="primary" type="submit" form="loginForm">Login</button>
+    <div *ngIf="errorMessage" [ngClass]="{'error-message': !isSuccess(), 'success-message': isSuccess()}">
+      {{ errorMessage }}
+    </div>
   </mat-card>
 </div>

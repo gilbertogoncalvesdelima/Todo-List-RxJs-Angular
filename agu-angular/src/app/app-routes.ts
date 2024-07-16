@@ -9,7 +9,7 @@ import {TaskComponent} from "./components/task/task.component";
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard] },
-  { path: 'task', component: TaskComponent, canActivate: [AuthGuard] },
+  { path: 'tasks', component: TaskListComponent,  },
+  { path: 'task', component: TaskComponent,  },
   { path: '', redirectTo: '/tasks', pathMatch: 'full' }
 ];

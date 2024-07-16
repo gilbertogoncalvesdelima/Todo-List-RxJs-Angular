@@ -9,6 +9,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 interface Task {
   id: string;
@@ -28,7 +30,8 @@ interface Task {
     MatIconModule,
     MatCheckboxModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
   ],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
@@ -36,7 +39,10 @@ interface Task {
 export class TaskListComponent {
   tasks: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.loadTasks();
@@ -57,9 +63,18 @@ export class TaskListComponent {
     this.taskService.deleteTask(id).subscribe({
       next: () => {
         this.tasks.splice(index, 1);
+        this.snackBar.open('Tarefa deletada com sucesso!', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        });
       },
       error: (err) => {
-        console.error('Error deleting task:', err);
+        this.snackBar.open('Erro ao deletar tarefa', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        });
       }
     });
   }

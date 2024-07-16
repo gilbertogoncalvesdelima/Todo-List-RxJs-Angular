@@ -38,7 +38,7 @@ export class TaskComponent {
           this.title = '';
           this.description = '';
           this.router.navigate(['/tasks']);
-          this.snackBar.open('Task added successfully', 'Close', {
+          this.snackBar.open('Tarefa criada com sucesso!', 'Close', {
             duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'top'
@@ -46,7 +46,7 @@ export class TaskComponent {
         },
         error: (err) => {
           console.error('Error adding task:', err);
-          this.snackBar.open('Failed to add task', 'Close', {
+          this.snackBar.open('Erro ao criar tarefa', 'Close', {
             duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'top'

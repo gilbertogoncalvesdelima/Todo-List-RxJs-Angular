@@ -20,8 +20,7 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     MatCardModule,
     MatSnackBarModule,
-    RouterModule,
-    ReactiveFormsModule
+    RouterModule
   ],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
@@ -40,7 +39,7 @@ export class TaskComponent implements OnInit {
     this.initForm();
   }
 
-  initForm(){
+  initForm(): void {
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required]

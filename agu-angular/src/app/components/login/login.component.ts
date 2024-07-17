@@ -25,6 +25,7 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
+  isSuccess: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password).subscribe(result => {
         if (result.success) {
+          this.isSuccess = true;
           this.errorMessage = 'Login realizado com sucesso';
           setTimeout(() => {
             this.router.navigate(['/tasks']);
@@ -53,10 +55,6 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-  }
-
-  isSuccess(): boolean {
-    return this.errorMessage === 'Login successful';
   }
 
 }

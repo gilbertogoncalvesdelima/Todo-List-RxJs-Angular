@@ -14,7 +14,7 @@
 
       <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
-    <div *ngIf="errorMessage" [ngClass]="{'error-message': !isSuccess(), 'success-message': isSuccess()}">
+    <div *ngIf="errorMessage" [ngClass]="{'error-message': !isSuccess, 'success-message': isSuccess}">
       {{ errorMessage }}
     </div>
   </mat-card>

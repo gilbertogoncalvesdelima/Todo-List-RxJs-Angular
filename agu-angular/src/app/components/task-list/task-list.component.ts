@@ -40,7 +40,6 @@ export class TaskListComponent {
 
   constructor(
     private taskService: TaskService,
-    private snackBar: MatSnackBar,
     private router: Router
   ) {}
 
@@ -63,18 +62,8 @@ export class TaskListComponent {
     this.taskService.deleteTask(id).subscribe({
       next: () => {
         this.tasks.splice(index, 1);
-        this.snackBar.open('Tarefa deletada com sucesso!', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top'
-        });
       },
       error: (err) => {
-        this.snackBar.open('Erro ao deletar tarefa', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top'
-        });
       }
     });
   }

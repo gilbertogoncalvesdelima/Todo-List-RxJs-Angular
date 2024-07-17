@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-task',
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
-    RouterModule
+    RouterModule,
+    MatSnackBarModule
   ],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
@@ -71,29 +73,23 @@ export class TaskComponent implements OnInit {
       const { title, description } = this.taskForm.value;
 
       if (this.editMode) {
-        // Atualizar tarefa existente
         this.taskService.updateTask(this.editTaskId!, { title, description }).subscribe({
           next: () => {
             this.feedbackMessage = 'Tarefa atualizada com sucesso!';
-            console.log('Task updated successfully'); // Log de depuração
             setTimeout(() => this.router.navigate(['/tasks']), 3000);
           },
           error: (err) => {
-            console.error('Error updating task:', err);
             this.feedbackMessage = 'Erro ao atualizar tarefa';
           }
         });
       } else {
-        // Adicionar nova tarefa
         this.taskService.addTask(title, description).subscribe({
           next: () => {
             this.taskForm.reset();
             this.feedbackMessage = 'Tarefa criada com sucesso!';
-            console.log('Task added successfully'); // Log de depuração
             setTimeout(() => this.router.navigate(['/tasks']), 3000);
           },
           error: (err) => {
-            console.error('Error adding task:', err);
             this.feedbackMessage = 'Erro ao criar tarefa';
           }
         });

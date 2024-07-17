@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.errorMessage = 'Login successful';
           setTimeout(() => {
             this.router.navigate(['/tasks']);
-          }, 1000); // Redireciona após 1 segundo
+          }, 1000); 
         } else {
           this.errorMessage = result.message;
         }

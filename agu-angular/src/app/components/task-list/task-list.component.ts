@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {TaskService} from "../../services/task.service";
-import {NgForOf} from "@angular/common";
-
+import { TaskService } from '../../services/task.service';
+import { NgForOf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -10,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { Router } from '@angular/router';
 
 interface Task {
   id: string;
@@ -34,14 +33,15 @@ interface Task {
     MatSnackBarModule,
   ],
   templateUrl: './task-list.component.html',
-  styleUrl: './task-list.component.scss'
+  styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent {
   tasks: Task[] = [];
 
   constructor(
     private taskService: TaskService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -77,5 +77,9 @@ export class TaskListComponent {
         });
       }
     });
+  }
+
+  editTask(task: Task): void {
+    this.router.navigate(['/task', task.id]);
   }
 }

@@ -14,13 +14,19 @@ export class TaskService {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
 
+  getTask(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
   addTask(title: string, description: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, { title, description });
+  }
+
+  updateTask(id: string, task: { title: string, description: string }): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, task);
   }
 
   deleteTask(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-
-
 }

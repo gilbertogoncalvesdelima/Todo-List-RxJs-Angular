@@ -1,6 +1,6 @@
 <div class="add-task-container">
   <mat-card class="add-task-card">
-    <h2>Add Task</h2>
+    <h2>{{ editMode ? 'Edit Task' : 'Add Task' }}</h2>
     <form [formGroup]="taskForm" (ngSubmit)="addTask()" class="form-add-task">
       <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
@@ -12,7 +12,8 @@
         <input matInput formControlName="description" type="text" id="description" required>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">Add Task</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">{{ editMode ? 'Update Task' : 'Add Task' }}</button>
     </form>
+    <div *ngIf="feedbackMessage" class="feedback-message">{{ feedbackMessage }}</div>
   </mat-card>
 </div>

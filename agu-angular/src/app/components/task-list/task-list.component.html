@@ -11,11 +11,11 @@
             <div class="task-title">{{ task.title }}</div>
             <div class="task-description">{{ task.description }}</div>
           </div>
-          <button mat-icon-button (click)="deleteTask(task.id, i)">
-            <mat-icon class="delete-button">delete</mat-icon>
+          <button mat-icon-button (click)="editTask(task)">
+            <mat-icon class="edit-button">edit</mat-icon>
           </button>
           <button mat-icon-button (click)="deleteTask(task.id, i)">
-            <mat-icon class="delete-button">edit</mat-icon>
+            <mat-icon class="delete-button">delete</mat-icon>
           </button>
         </div>
       </mat-list-item>

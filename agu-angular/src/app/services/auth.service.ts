@@ -21,10 +21,10 @@ export class AuthService {
               localStorage.setItem('token', 'mock-token');
               return of({ success: true, message: 'Login com sucesso' });
             } else {
-              return of({ success: false, message: 'Incorrect password' });
+              return of({ success: false, message: 'Senha Incorreta' });
             }
           } else {
-            return of({ success: false, message: 'Usuário nào encontrado' });
+            return of({ success: false, message: 'Usuário não encontrado' });
           }
         }),
         catchError(error => {
@@ -46,7 +46,6 @@ export class AuthService {
           }
         }),
         catchError(error => {
-          console.error('Registration error', error);
           return of(false);
         })
       );

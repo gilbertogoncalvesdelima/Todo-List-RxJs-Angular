@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password).subscribe(result => {
         if (result.success) {
-          this.errorMessage = 'Login successful';
+          this.errorMessage = 'Login realizado com sucesso';
           setTimeout(() => {
             this.router.navigate(['/tasks']);
           }, 1000); 

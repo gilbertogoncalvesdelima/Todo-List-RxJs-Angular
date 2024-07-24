@@ -1,4 +1,6 @@
 # Requisitos para Teste Técnico de Desenvolvedor AGU
+
+sss
 ## Descrição do Projeto
 Você será responsável por desenvolver uma aplicação simples de gerenciamento de tarefas (To-Do List) que permita ao usuário adicionar, editar, remover e listar tarefas. A aplicação deverá ser desenvolvida utilizando a stack especificada. A interface deve ser intuitiva e responsiva. A comunicação entre o frontend e o backend deve ser realizada via REST API.
 Este teste pode ser melhorado, porém é necessário que seja respeitado as tecnologias listas.
@@ -70,3 +72,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+https://mockapi.io/projects/6696d0a00312447373c3ca19
+
+https://6696d0a00312447373c3ca18.mockapi.io/login
+
+http://localhost:4200/login
